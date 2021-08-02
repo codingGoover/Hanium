@@ -8,7 +8,6 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        app:srcCompat="@drawable/blue_car"
         android:layout_width="108dp"
         android:layout_height="92dp"
         android:background="@color/white"
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025"
-        />
+        app:srcCompat="@drawable/blue_car" />
 
     <TextView
         android:id="@+id/textView7"
@@ -43,13 +42,11 @@
         android:background="@drawable/roundbutton"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/light_gray"
         android:paddingLeft="10dp"
         android:text="ID를 입력해주세요."
+        android:textColor="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36" />
 
@@ -62,9 +59,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45" />
 
@@ -75,13 +70,11 @@
         android:background="@drawable/roundbutton"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/light_gray"
         android:paddingLeft="10dp"
         android:text="PW를 입력해주세요."
+        android:textColor="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -94,7 +87,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.599" />
@@ -106,13 +99,11 @@
         android:background="@drawable/roundbutton"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/light_gray"
-        android:text="PW를 한번 더 입력해주세요."
         android:paddingLeft="10dp"
+        android:text="PW를 한번 더 입력해주세요."
+        android:textColor="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.649" />
 
@@ -140,9 +131,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315" />
 
@@ -156,10 +145,10 @@
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
+        app:layout_constraintVertical_bias="0.787" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
