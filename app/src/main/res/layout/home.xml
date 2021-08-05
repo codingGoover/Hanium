@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".HomeActivity">
 
 
     <ImageView
@@ -19,13 +19,11 @@
         app:srcCompat="@drawable/home" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/departBT"
         android:layout_width="77dp"
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
-        android:onClick="onClick"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.808"
@@ -65,12 +63,11 @@
         app:layout_constraintVertical_bias="0.737" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/parkingBT"
         android:layout_width="77dp"
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
-        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -95,12 +92,11 @@
         app:layout_constraintVertical_bias="0.737" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/registerBT"
         android:layout_width="77dp"
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
-        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"

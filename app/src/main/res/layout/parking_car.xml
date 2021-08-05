@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DepartureActivity">
+    tools:context=".ParkingActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="출차하기"
+        android:text="주차하기"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="주차된 차량"
+        android:text="등록된 차량"
         android:textSize="20sp"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,10 +50,10 @@
         android:id="@+id/checkBT"
         android:layout_width="290dp"
         android:layout_height="58dp"
-        android:text="출차"
+        android:text="주차"
+        android:onClick="onClick"
         android:textSize="19sp"
         android:textStyle="bold"
-        android:onClick="onClick"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

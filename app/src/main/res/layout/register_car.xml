@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
 
     <TextView
@@ -63,9 +63,10 @@
         app:layout_constraintVertical_bias="0.458" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/checkBT"
         android:layout_width="291dp"
         android:layout_height="58dp"
+        android:onClick="onClick"
         android:text="등록하기"
         android:textSize="17sp"
         app:backgroundTint="@color/blue"
@@ -77,10 +78,11 @@
         app:layout_constraintVertical_bias="0.662" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/homeBT"
         android:layout_width="108dp"
         android:layout_height="92dp"
         android:background="@color/white"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.161"
