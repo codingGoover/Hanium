@@ -13,6 +13,8 @@
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".DepartureActivity"></activity>
+        <activity android:name=".ParkingActivity"></activity>
 
         <activity android:name=".SplashActivity">
             <intent-filter>

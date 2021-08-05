@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
                 break;
             case R.id.checkBT:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("인사말").setMessage("반갑습니다");
+                builder.setTitle("알람").setMessage("등록이 완료되었습니다");
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 break;
