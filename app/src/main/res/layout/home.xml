@@ -24,12 +24,13 @@
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
+        android:onClick="onClick"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.808"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintVertical_bias="0.668"
         app:srcCompat="@drawable/backcar" />
 
@@ -65,11 +66,11 @@
 
     <ImageButton
         android:id="@+id/imageButton3"
-
         android:layout_width="77dp"
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -99,6 +100,7 @@
         android:layout_height="80dp"
         android:background="@color/white"
         android:scaleType="fitCenter"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
