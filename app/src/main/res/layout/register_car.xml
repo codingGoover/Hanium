@@ -92,7 +92,7 @@
         app:srcCompat="@drawable/blue_car" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_id"
         android:layout_width="291dp"
         android:layout_height="48dp"
         android:background="@drawable/roundbutton"
