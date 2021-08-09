@@ -1,4 +1,5 @@
 package com.example.hanium;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,14 +14,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton regiBT;
     ImageButton parkBT;
     ImageButton departBT;
+    BluetoothAdapter mBluetoothAdapter = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-
-
-
+        // Check if Bluetooth is supported by the device
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            finish();
+        }
 
         regiBT = (ImageButton) findViewById(R.id.registerBT);
         regiBT.setOnClickListener(this);
@@ -42,6 +47,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.parkingBT:
                 //주차하기 버튼 클릭시 주차 페이지로 이동
+                mBluetoothAdapter.enable();
                 intent = new Intent(getApplicationContext(),ParkingActivity.class);
                 startActivity(intent);
                 break;

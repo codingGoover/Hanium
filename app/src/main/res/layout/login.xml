@@ -125,7 +125,6 @@
             android:ems="10"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:text="passwored"
             android:textStyle="bold" />
     </LinearLayout>
 
