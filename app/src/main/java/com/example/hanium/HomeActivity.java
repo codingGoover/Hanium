@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.departBT:
                 //출차하기 버튼 클릭시 출차 페이지로 이동
+                mBluetoothAdapter.enable();
                 intent = new Intent(getApplicationContext(),DepartureActivity.class);
                 startActivity(intent);
                 break;

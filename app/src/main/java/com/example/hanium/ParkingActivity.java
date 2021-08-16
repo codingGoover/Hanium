@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +18,6 @@ public class ParkingActivity extends AppCompatActivity {
     private String DEVICE_NAME = "blueblue";
     private Button checkBT;
     private TextView mTextViewStatus;
-
     Intent intent;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +76,6 @@ public class ParkingActivity extends AppCompatActivity {
                 if (mBluetooth.isConnected()) {
                     mBluetooth.SendMessage("disconnect");
                     mBluetoothAdapter.disable();
-
                 }
                 break;
 
