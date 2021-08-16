@@ -13,7 +13,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity  {
+import java.io.Serializable;
+
+
+public class LoginActivity extends AppCompatActivity  implements Serializable {
 
 private EditText et_id, et_pw;
 private TextView btn_register;
@@ -59,6 +62,8 @@ private Button btn_login;
                                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                 intent.putExtra("userId",userID);
                                 intent.putExtra("userPassword",userPassword);
+User user = new User(userID,userPassword);
+intent.putExtra("user",user);
                                 startActivity(intent);
                             }
                             else{//로그인 실패한 경우

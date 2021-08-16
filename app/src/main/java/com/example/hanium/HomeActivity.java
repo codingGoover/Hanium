@@ -8,17 +8,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+import java.io.Serializable;
 
-    Intent intent;
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener , Serializable {
+
+    Intent intent ;
     ImageButton regiBT;
     ImageButton parkBT;
     ImageButton departBT;
+    TextView tv_id;
     BluetoothAdapter mBluetoothAdapter = null;
-
+    User user;
     protected void onCreate(Bundle savedInstanceState) {
+        intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
 
         // Check if Bluetooth is supported by the device
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -35,6 +42,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         departBT=(ImageButton)findViewById(R.id.departBT);
         departBT.setOnClickListener(this);
+
+        tv_id = (TextView)findViewById(R.id.tv_id);
+        tv_id.setText(user.getUserID()+ " 님");
+
     }
 
     public void onClick(View v){
@@ -43,18 +54,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.registerBT:
                 //등록하기 버튼 클릭시 등록 페이지로 이동
                 intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 break;
             case R.id.parkingBT:
                 //주차하기 버튼 클릭시 주차 페이지로 이동
                 mBluetoothAdapter.enable();
                 intent = new Intent(getApplicationContext(),ParkingActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 break;
             case R.id.departBT:
                 //출차하기 버튼 클릭시 출차 페이지로 이동
                 mBluetoothAdapter.enable();
                 intent = new Intent(getApplicationContext(),DepartureActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 break;
             default:
