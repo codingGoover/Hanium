@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_gravity="center"
-        android:text="무인 발렛 파킹"
+        android:text="자율주차봇"
         android:textColor="@color/white"
         android:textSize="26dp"
         android:textStyle="bold"
