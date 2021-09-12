@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements Serializable 
     private Button checkBT;
     private AlertDialog dialog;
     boolean RegiSucced = false;
-    private static String TAG = "phptest_MainActivity";
+    private static String TAG = "phptest_LoadActivity";
     private TextView mTextViewResult;
 
     private static final String TAG_JSON="webnautes";
@@ -56,10 +56,10 @@ public class RegisterActivity extends AppCompatActivity implements Serializable 
 
     private String mJsonString;
     private Spinner spinner;
-    ArrayList<HashMap<String, String>> mArrayList;
 
 
-    ArrayList<String> items = new ArrayList<String>();
+
+    ArrayList<String> cars = new ArrayList<String>();
 
 
 
@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity implements Serializable 
         spinner = (Spinner) findViewById(R.id.spinner);
 
 
-        mArrayList = new ArrayList<>();
+
 
         GetData task = new GetData();
 
@@ -191,17 +191,17 @@ public class RegisterActivity extends AppCompatActivity implements Serializable 
                 String num = item.getString(TAG_NUM);
                 String state = item.getString(TAG_STATE);
                 if(id.equals(user.getUserID())) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 차량번호만 가져옴.
-                    items.add(num);
+                    cars.add(num);
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put(TAG_ID, id);
                 hashMap.put(TAG_NUM, num);
                 hashMap.put(TAG_STATE, state);
 
-                mArrayList.add(hashMap);
+
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    RegisterActivity.this, android.R.layout.simple_spinner_item, items
+                    RegisterActivity.this, android.R.layout.simple_spinner_item, cars
             );
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
             spinner.setAdapter(adapter);
