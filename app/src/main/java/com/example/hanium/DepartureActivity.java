@@ -261,7 +261,7 @@ String state = item.getString(TAG_STATE);
 
             case R.id.checkBT:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("알림").setMessage("출차를 시작합니다");
+                builder.setTitle("알림").setMessage("출차를 시작합니다"); //
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
                 if (mBluetooth.isConnected()) {

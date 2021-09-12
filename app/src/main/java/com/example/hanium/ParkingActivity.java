@@ -357,7 +357,7 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("알림").setMessage("주차를 시작하겠습니다.");
+                builder.setTitle("알림").setMessage("주차를 시작하겠습니다."); //
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
 
