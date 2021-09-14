@@ -53,10 +53,9 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
     private TextView mTextViewStatus;
     Intent intent;
     private static String TAG = "phptest_LoadActivity";
-    private static final String TAG_JSON="webnautes";
+    private static final String TAG_JSON = "webnautes";
     private static final String TAG_ID = "userID";
     private static final String TAG_NUM = "carNum";
-
 
 
     User user;
@@ -69,7 +68,7 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
     static private String selectNum;
 
 
-    public static  String UPDATE = "http://auddms.ivyro.net/updateCar.php";
+    public static String UPDATE = "http://auddms.ivyro.net/updateCar.php";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +78,7 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
         spinner = (Spinner) findViewById(R.id.spinner);
 
         mTextViewStatus = (TextView) findViewById(R.id.ID_STATUSTEXT);
-        checkBT=(Button)findViewById(R.id.checkBT);
+        checkBT = (Button) findViewById(R.id.checkBT);
 
         // Check if Bluetooth is supported by the device
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -127,27 +126,6 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
 
 
 
-
-
-    public void updateCar() {
-        String userid = user.getUserID().toString();
-        String carNum = selectNum;
-
-
-        HashMap<String, String> requestedParams = new HashMap<>();
-        requestedParams.put("userid", userid);
-        requestedParams.put("carNum", carNum);
-
-
-
-        PostRequestHandler postRequestHandler = new PostRequestHandler(UPDATE, requestedParams);
-        postRequestHandler.execute();
-
-
-
-    }
-
-
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
@@ -171,16 +149,15 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
             Log.d(TAG, "response  - " + result);
 
 
+            if (result == null) {
 
-            if (result == null){
 
-
-            }
-            else {
+            } else {
                 mJsonString = result;
                 showResult();
             }
         }
+
         @Override
         protected String doInBackground(String... params) {
 
@@ -202,10 +179,9 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
                 Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
                     inputStream = httpURLConnection.getInputStream();
-                }
-                else{
+                } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
 
@@ -216,7 +192,7 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
                 StringBuilder sb = new StringBuilder();
                 String line;
 
-                while((line = bufferedReader.readLine()) != null){
+                while ((line = bufferedReader.readLine()) != null) {
                     sb.append(line);
                 }
 
@@ -240,26 +216,24 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
     }
 
 
-
-    private void showResult(){
+    private void showResult() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            for(int i=0;i<jsonArray.length();i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String id = item.getString(TAG_ID);
                 String num = item.getString(TAG_NUM);
 
-                if(id.equals(user.getUserID())) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 차량번호만 가져옴.
+                if (id.equals(user.getUserID())) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 차량번호만 가져옴.
                     cars.add(num);
-                HashMap<String,String> hashMap = new HashMap<>();
+                HashMap<String, String> hashMap = new HashMap<>();
 
                 hashMap.put(TAG_ID, id);
                 hashMap.put(TAG_NUM, num);
-
 
 
             }
@@ -293,17 +267,12 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
     }
 
 
-
-
-
-
-    public void onClick(View v){
-        switch(v.getId())
-        {
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.homeBT:
                 //  mBluetooth.Disconnect(false);
                 //홈 버튼 클릭시 홈 페이지로 이동
-                intent = new Intent(getApplicationContext(),HomeActivity.class);
+                intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
                 if (mBluetooth.isConnected()) {
                     mBluetooth.SendMessage("disconnect");
@@ -324,18 +293,17 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
                             if (success) { // 성공한 경우
 
 
-
-                                Toast.makeText(getApplicationContext(), "등록이 성공?.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "수정이 성공되었습니다.", Toast.LENGTH_SHORT).show();
 
 
                                 //user.addCar(carNum);
                                 //intent.putExtra("user",user);
-                                intent = new Intent(getApplicationContext(),HomeActivity.class);
+                                intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(intent);
 
 
                             } else {// 실패한 경우
-                                Toast.makeText(getApplicationContext(), "등록이 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "실패하였습니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
@@ -343,17 +311,12 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
                         }
 
 
-
-
                     }
                 };
 
-                UpdateRequest CarUpdateRequest = new UpdateRequest(user.getUserID(), selectNum,responseListener);
+                UpdateRequest CarUpdateRequest = new UpdateRequest(user.getUserID(), selectNum, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ParkingActivity.this);
                 queue.add(CarUpdateRequest);
-
-
-
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -368,149 +331,6 @@ public class ParkingActivity extends AppCompatActivity implements Serializable {
                 break;
         }
     }
-
-
-
-}
-
-class PostRequestHandler extends AsyncTask<Void, Void, String> {
-    // php URL 주소
-    String url;
-    // Key, Value 값
-    HashMap<String, String> requestedParams;
-    PostRequestHandler(String url, HashMap<String, String> params){
-        this.url = url; this.requestedParams = params;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override protected String doInBackground(Void... voids) {
-        // post request 보냄
-
-        try { String s = postRequestHandler(url, requestedParams);
-            return s.toString(); }
-        catch (UnsupportedEncodingException e)
-        { e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override protected void onPostExecute(String s) {
-        super.onPostExecute(s); }
-
-    public String postRequestHandler(String requestUrl, HashMap<String, String> requestedDataParams) throws UnsupportedEncodingException { // Set an Empty URL obj in system
-        URL url;
-        // Set a String Builder to store result as string
-        StringBuilder stringBuilder = new StringBuilder();
-        // Now Initialize URL
-        try {
-            url = new URL(requestUrl);
-            try {
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-
-                // Make a HTTP url connection
-
-                // Set Method Type
-
-                // Set Connection Time
-                connection.setConnectTimeout(10000);
-                connection.setReadTimeout(10000);
-                connection.setRequestMethod("POST");
-                // set Input output ok
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-
-                // Remove Caches
-                // connection.setUseCaches(false);
-                // connection.setDefaultUseCaches(false);
-
-
-                // Creating a url as String with params
-                StringBuilder url_string = new StringBuilder();
-                boolean ampersand = true;
-                for (Map.Entry<String, String> params : requestedDataParams.entrySet()) {
-                    if (ampersand)
-                        ampersand = false;
-                    else
-                        url_string.append("&");
-
-                    url_string.append(URLEncoder.encode(params.getKey(), "UTF-8"));
-                    url_string.append("=");
-                    url_string.append(URLEncoder.encode(params.getValue(), "UTF-8"));
-                }
-                Log.d("Final Url===", url_string.toString());
-
-                //Creating an output stream
-                OutputStream outputStream = connection.getOutputStream();
-
-                // Write Output Steam
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                bufferedWriter.write(url_string.toString());
-
-
-
-
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-                //Log.d("Response===", connection.getResponseMessage());
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    // Local String
-                    String result;
-                    while ((result = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(result);
-                    }
-
-                    // Log.d("Result===", result);
-
-                }
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return stringBuilder.toString(); }
-
-    // Get Request Handler
-    public String getRequestHandler(String requestUrl){
-        // To Store response
-        StringBuilder stringBuilder = new StringBuilder();
-
-        try {
-            URL url = new URL(requestUrl);
-            // Open Connection
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-            // Local
-            String result;
-            while ((result = bufferedReader.readLine()) != null) {
-                stringBuilder.append(result + "\n");
-            }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-
-
 
 
 }
